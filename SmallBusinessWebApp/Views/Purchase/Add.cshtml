@@ -1,0 +1,254 @@
+﻿@model SmallBusinessWebApp.Models.PurchaseVM
+
+@{
+    Layout = "~/Views/Shared/_MuTheme.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-7">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title card-header" style="margin-bottom : 25px;">Supplier</h4>
+                    <div class="row form-group">
+                        <label class="col-sm-3 text-right control-label col-form-label" for="SupDate">Date</label>
+                        <div class="col-md-9">
+                            <input type="date" class="form-control" id="SupDate" placeholder="Purchase Date" name="SupDate">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 text-right control-label col-form-label" for="SupBill">Bill/Invoice No</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="SupBill" placeholder="Bill or Invoice No" name="SupBill">
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <label class="col-sm-3 text-right control-label col-form-label" for="SupID">Supplier</label>
+                        <div class="col-sm-9">
+                            <select class="col-md-12 rounded" name="SupID" id="SupID" style="height : 40px;">
+                                <option value="none" selected disabled hidden>--Select--</option>
+                                @foreach (var supplier in Model.Suppliers)
+                                {
+                                    <option name="SupID" value="@supplier.Id">@supplier.SupplierName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title card-header">Products</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row form-group" style="margin-top : 75px;">
+                                <label class="col-sm-4 text-right control-label col-form-label" for="PurProduct">Products</label>
+                                <div class="col-sm-8">
+                                    <select class="col-md-12 rounded" name="PurProduct" id="PurProduct" style="height : 40px;">
+                                        <option value="none" selected disabled hidden>--Select--</option>
+                                        @foreach (var product in Model.Products)
+                                        {
+                                            <option name="PurProduct" value="@product.Id">@product.ProductName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4 text-right control-label col-form-label" for="PurProductCode">Code</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="PurProductCode" placeholder="Product Code" name="PurProductCode" readonly>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4 text-right control-label col-form-label" for="PurManufacturedDate">Manufactured Date</label>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" id="PurManufacturedDate" placeholder="Manufactured Date" name="PurManufacturedDate">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4 text-right control-label col-form-label" for="PurExpireDate">Expire Date</label>
+                                <div class="col-md-8">
+                                    <input type="date" class="form-control" id="PurExpireDate" placeholder="Expire Date" name="PurExpireDate">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row form-group">
+                                <label class="col-sm-4 text-right control-label col-form-label" for="PurQuantity">Quantity</label>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" id="PurQuantity" placeholder="Quantity" name="PurQuantity">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4 text-right control-label col-form-label" for="PurUnitPrice">Unit Price(tk)</label>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" id="PurUnitPrice" placeholder="Unit Price" name="PurUnitPrice">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4 text-right control-label col-form-label" for="PurTotalPrice">Total Price(tk)</label>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" id="PurTotalPrice" placeholder="Total Price" name="PurTotalPrice" readonly>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4 text-right control-label col-form-label" for="PurPreviousCostPrice">Previous Cost Price(tk)</label>
+                                <div class="col-md-8">
+                                    <input type="number" class="form-control" id="PurPreviousCostPrice" placeholder="Previous Cost Price" name="PurPreviousCostPrice" readonly>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4 text-right control-label col-form-label" for="PurPreviousMRP">Previous MRP(tk)</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="PurPreviousMRP" placeholder="Previous MRP" name="PurPreviousMRP" readonly>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <label class="col-sm-4 text-right control-label col-form-label" for="PurNewMRP">New MRP(tk)</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="PurNewMRP" placeholder="New MRP" name="PurNewMRP">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2" style="margin-top : 15px;">
+                            <label class="col-sm-12 text-right control-label col-form-label" for="PurRemarks">Remarks</label>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="col-md-11">
+                                <textarea class="form-control" rows="3" id="PurRemarks" placeholder="Remarks" name="PurRemarks"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row card-body">
+                    <div class="col-md-9"></div>
+                    <div class="col-md-3">
+                        <button type="button" id="addButton" class="btn btn-primary" style="width : 150px;">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form class="form-horizontal" action="/purchase/add" method="POST">
+        <div class="container" style="margin-top : 15px;">
+            <table class="table table-bordered table-hover">
+                <thead class="bg-info text-center text-white">
+                    <tr>
+                        <th>SL</th>
+                        <th>Product(Code)</th>
+                        <th>Manufacted Date</th>
+                        <th>Expire Date</th>
+                        <th>Qunatity</th>
+                        <th>Unit Price</th>
+                        <th>Total Price</th>
+                        <th>New MRP</th>
+                        <th>Remarks</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody" class="text-center" style="background-color : lightgray;"></tbody>
+            </table>
+        </div>
+        <div class="row card-body  margin-bottom : 250px;">
+            <div class="col-md-9"></div>
+            <div class="col-md-3">
+                <button type="submit" id="submitButton" class="btn btn-primary" style="width : 150px;">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#PurProduct").change(function () {
+            var ProductId = $("#PurProduct").val();
+            var jsonData = {
+                ProductId: ProductId
+            };
+            $.ajax({
+                url: "/product/getProductCode",
+                type: "POST",
+                data: jsonData,
+                success: (response) => {
+                    $('#PurProductCode').val(response.Code);
+                }
+            });
+        });
+        //$("#Quantity").focusout(function () {
+        //    var price = $('#PurUnitPrice').val();
+        //    var quantity = $('#Quantity').val();
+        //    if (price != "" && quantity != "")
+        //        $('#PurTotalPrice').val(price * quantity);
+        //});
+        //$("#PurUnitPrice").focusout(function () {
+        //    var price = Number($('#PurUnitPrice').val());
+        //    mrp = price + ((price * 25) / 100);
+        //    $('#PurNewMRP').val(mrp);
+        //    var quantity = $('#Quantity').val();
+        //    if (price != "" && quantity != "")
+        //        $('#PurTotalPrice').val(price * quantity);
+        //});
+        //var i = 0;
+        //$("#addButton").click(function () {
+        //    var supplierDate = $("#SupDate").val();
+        //    var supplierBill = $("#SupBill").val();
+        //    var supplier = $("#SupID").val();
+
+        //    var productID = $("#PurProduct").val();
+        //    var productName = $("#PurProduct").children("option:selected").text();
+        //    var productCode = $("#PurProductCode").val();
+        //    var manufacturedDate = $("#PurManufacturedDate").val();
+        //    var expireDate = $("#PurExpireDate").val();
+        //    var quantity = $("#PurQuantity").val();
+        //    var unitPrice = $("#PurUnitPrice").val();
+        //    var totalPrice = $("#PurTotalPrice").val();
+        //    var newMRP = $("#PurNewMRP").val();
+        //    var remarks = $("#PurRemarks").val();
+
+        //    var supplierDateHidden = "<input type='hidden' name='Invoice.InvoiceDate' value='" + supplierDate + "'/>";
+        //    var supplierBillHidden = "<input type='hidden' name='Invoice.InvoiceNo' value='" + supplierBill + "'/>";
+        //    var supplierHidden = "<input type='hidden' name='Invoice.SuppliedID' value='" + supplier + "'/>";
+
+        //    var invoiceHidden = "<input type='hidden' name='PurchaseProducts[" + i + "].InvoiceNo' value='" + supplierBill + "'/>";
+        //    var productNameHidden = "<input type='hidden' name='PurchaseProducts[" + i + "].ProductID' value='" + productID + "'/>";
+        //    var productCodeHidden = "<input type='hidden' name='PurchaseProducts[" + i + "].ProductCode' value='" + productCode + "'/>";
+        //    var manufacturedDateHidden = "<input type='hidden' name='PurchaseProducts[" + i + "].ManufacturedDate' value='" + manufacturedDate + "'/>";
+        //    var expireDateHidden = "<input type='hidden' name='PurchaseProducts[" + i + "].ExpireDate' value='" + expireDate + "'/>";
+        //    var quantityHidden = "<input type='hidden' name='PurchaseProducts[" + i + "].Quantity' value='" + quantity + "'/>";
+        //    var unitPriceHidden = "<input type='hidden' name='PurchaseProducts[" + i + "].UnitPrice' value='" + unitPrice + "'/>";
+        //    var totalPriceHidden = "<input type='hidden' name='PurchaseProducts[" + i + "].TotalPrice' value='" + totalPrice + "'/>";
+        //    var newMRPHidden = "<input type='text' name='PurchaseProducts[" + i + "].NewMRP' value='" + newMRP + "'/>";
+        //    var remarksHidden = "<input type='hidden' name='PurchaseProducts[" + i + "].Remarks' value='" + remarks + "'/>";
+
+        //    var htmlTable = "<tr>" +
+        //        "<td>" + supplierDateHidden + supplierBillHidden + supplierHidden + invoiceHidden + (++i) + "</td>" +
+        //        "<td>" + productNameHidden + productCodeHidden + productName + "(" + productCode + ")" + "</td>" +
+        //        "<td>" + manufacturedDateHidden + manufacturedDateHidden + manufacturedDate + "</td>" +
+        //        "<td>" + expireDateHidden + expireDate + "</td>" +
+        //        "<td>" + quantityHidden + quantity + "</td>" +
+        //        "<td>" + unitPriceHidden + unitPrice + "</td>" +
+        //        "<td>" + totalPriceHidden + totalPrice + "</td>" +
+        //        "<td>" + newMRPHidden + newMRP + "</td>" +
+        //        "<td>" + remarksHidden + remarks + "</td>" +
+        //        "<td>" +
+        //        "<a href=' / supplier / Edit' class='btn btn-primary btn - xs' title='Edit'>" +
+        //        "<span class='glyphicon glyphicon - edit'>Edit</span>" +
+        //        "</a>" +
+        //        "<a href=' / supplier / Delete' class='btn btn-danger btn - xs' title='Delete'>" +
+        //        "<span class='glyphicon glyphicon - trash'>Delete</span>" +
+        //        "</a>" +
+        //        "</td>" +
+        //        "</tr>";
+        //    $("#tableBody").append(htmlTable);
+        //});
+    });
+</script>

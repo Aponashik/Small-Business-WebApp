@@ -1,0 +1,86 @@
+﻿
+
+
+@model SmallBusinessWebApp.Models.SupplierModelView
+@{
+    Layout = "~/Views/Shared/_MuTheme.cshtml";
+}
+
+
+<div>
+
+    <form class="text-center border border-light p-5" method="post" style="background-color:#F2F2F2;width:50%;margin-left:345px; ">
+
+        <p class="h4 mb-4" style="color:cornflowerblue">Supplier Search!</p>
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <!--CODE -->
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Enter Supplier Code" name="Code">
+            </div>
+            <div class="col">
+
+                <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Enter Supplier Name" name="SupplierName">
+            </div>
+
+        </div>
+
+
+
+
+
+
+        <!-- Sign up button -->
+        <button class="btn btn-info my-4 btn-block" type="submit">Search</button>
+
+        <button style="position:center;" class="btn btn-outline-success"> <a href="~/Supplier/Add">Add Supplier </a></button>
+
+    </form><br />
+</div>
+<div class="container" style="margin-top : 15px; margin-bottom : 250px;">
+    <table class="table table-bordered table-hover">
+        <thead class="" style=" background-color:#8A2BE2;">
+            <tr>
+                <th style="color:black;text-align:center">SL</th>
+                <th style="color:black;text-align:center">Code</th>
+                <th style="color:black;text-align:center">Supplier Name        </th>
+                <th style="color:black;text-align:center">Address</th>
+                <th style="color:black;text-align:center">Email</th>
+
+                <th style="color:black;text-align:center">Contact Number</th>
+                <th style="color:black;text-align:center">Contact Person</th>
+                <th style="color:black;text-align:center">Image</th>
+                <th style="color:black;text-align:center">Action</th>
+            </tr>
+        </thead>
+        <tbody class="text-center" style="background-color : lightgray;">
+            @if (Model != null && Model.Suppliers != null && Model.Suppliers.Count > 0)
+            {
+                int sl = 1;
+                foreach (var supplier in Model.Suppliers)
+                {
+                    <tr>
+                        <td>@(sl++)</td>
+                        <td>@supplier.Code</td>
+                        <td>@supplier.SupplierName</td>
+                        <td>@supplier.Address</td>
+                        <td>@supplier.Email</td>
+
+                        <td>@supplier.Contact</td>
+                        <td>@supplier.ContactPerson</td>
+                        <td>Image</td>
+                        <td>
+                            @Html.ActionLink("Edit ", "Edit", new { Id = supplier.Id })
+                            |@Html.ActionLink("Delete ", "Delete", new { Id = supplier.Id })
+                        </td>
+
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</div>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
